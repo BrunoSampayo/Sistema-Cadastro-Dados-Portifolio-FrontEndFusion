@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Team {
+  id         String   @id @default(cuid())
+  name       String   @unique
+  people     Person[]
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Person {
+  id           String    @id @default(cuid())
+  name         String
+  githubName   String
+  subTitle     String
+  text         String
+  projects     Project[]
+  teamId       String?
+  team         Team?     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  githubUrl    String
+  linkedinUrl  String
+  instagramUrl String
+  facebookUrl  String
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+}
+
+model Project {
+  id         String @id @default(cuid())
+  projectUrl String
+  personId   String
+  person     Person @relation(fields: [personId], references: [id], onDelete: Cascade)
+}

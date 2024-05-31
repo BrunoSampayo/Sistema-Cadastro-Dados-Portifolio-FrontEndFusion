@@ -12,7 +12,7 @@ export default async function TeamPage({
   })
 
   return (
-    <div className="text-white">
+    <div className="text-white container">
       <h1 className="text-center text-2xl mb-4">{team?.name}</h1>
       <div className="flex justify-center">
         <AddMemberForm teamId={team?.id} />

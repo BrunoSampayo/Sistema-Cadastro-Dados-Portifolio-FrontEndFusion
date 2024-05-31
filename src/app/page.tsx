@@ -80,7 +80,7 @@ export default function Home() {
                   )}
                 />
                 <Button disabled={isPending} type="submit">
-                  Pesquisar
+                  Ir para pagina do time
                 </Button>
               </div>
             </form>
@@ -89,7 +89,7 @@ export default function Home() {
         <CardFooter>
           <div className="flex justify-between">
             <Button asChild variant="link">
-              <Link href="/team/register">Preciso Registrar minha Equipe</Link>
+              <Link href="/team">Preciso Registrar minha Equipe</Link>
             </Button>
           </div>
         </CardFooter>

@@ -7,6 +7,9 @@ export const searchSchema = z.object({
 export const addMemberSchema = z.object({
   name: z.string().min(4, { message: 'Minimo 4 Caracteres' }),
 })
+export const addTeamSchema = z.object({
+  name: z.string().min(3, { message: 'Minimo 3 Caracteres' }),
+})
 
 export const addProjectSchema = z.object({
   projectUrl: z.string().url(),

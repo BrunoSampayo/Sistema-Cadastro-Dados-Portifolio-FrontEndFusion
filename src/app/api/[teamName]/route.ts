@@ -1,4 +1,5 @@
 import prismadb from '@/lib/prisma'
+
 import { NextResponse } from 'next/server'
 
 export async function GET(
@@ -10,11 +11,24 @@ export async function GET(
     where: { name: params.teamName },
   })
 
-  if (!team) return new NextResponse('Não encontrado', { status: 403 })
+  if (!team)
+    return new NextResponse('Não encontrado', {
+      status: 403,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
+    })
   const completeData = await prismadb.team.findUnique({
     where: { name: params.teamName },
     include: { people: { include: { projects: true } } },
   })
-  console.log(completeData)
-  return NextResponse.json(completeData, { status: 200 })
+
+  return NextResponse.json(completeData, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  })
 }

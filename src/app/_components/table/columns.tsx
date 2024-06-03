@@ -26,6 +26,10 @@ import { Team } from '@prisma/client'
 import { deleteTeam } from '@/actions/deleteTeam'
 import Link from 'next/link'
 
+import { Badge } from '@/components/ui/badge'
+import toast from 'react-hot-toast'
+
+import UseCurrentUrl from '@/hooks/getUrl'
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 
@@ -94,6 +98,26 @@ export const columns: ColumnDef<Team>[] = [
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+      )
+    },
+  },
+  {
+    header: 'Url Api',
+    cell: ({ row }) => {
+      const thisRow = row.original
+      const currentHref = UseCurrentUrl()
+      return (
+        <div>
+          <Badge
+            className="cursor-pointer"
+            onClick={() => {
+              navigator.clipboard.writeText(`${currentHref}api/${thisRow.name}`)
+              toast.success('link copiado')
+            }}
+          >
+            {`${currentHref}api/${thisRow.name}`}
+          </Badge>
+        </div>
       )
     },
   },

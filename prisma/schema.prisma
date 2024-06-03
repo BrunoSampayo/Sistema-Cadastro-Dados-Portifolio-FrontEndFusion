@@ -19,6 +19,7 @@ model Person {
   id           String    @id @default(cuid())
   name         String
   githubName   String
+  githubImgUrl String?
   subTitle     String
   text         String
   projects     Project[]

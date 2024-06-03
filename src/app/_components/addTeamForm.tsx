@@ -41,7 +41,7 @@ export default function AddTeamForm() {
     })
   }
   return (
-    <main className="text-white">
+    <main className="">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="flex items-end space-x-2">
@@ -67,7 +67,7 @@ export default function AddTeamForm() {
               />
             </div>
             <Button
-              className=" "
+              className=""
               variant="secondary"
               disabled={isPending}
               type="submit"

@@ -1,5 +1,7 @@
 import prismadb from '@/lib/prisma'
 import EditMember from './_components/editMemberForm'
+import { ChevronLeft } from 'lucide-react'
+import Link from 'next/link'
 
 export default async function MemberPage({
   params,
@@ -14,9 +16,15 @@ export default async function MemberPage({
   const data = await getMemberData()
   if (data === null) return
   return (
-    <div className="">
-      <div className="w-1/2 rounded bg-white mx-auto mt-6 p-1">
-        <p className="text-center">Usuario: {data?.name}</p>
+    <div className=" container">
+      <div className="rounded bg-white mx-auto mt-6 p-1">
+        <Link
+          href={`/${data.teamId}`}
+          className="m-4 rounded-full border size-10 flex justify-center items-center hover:bg-black hover:text-white"
+        >
+          <ChevronLeft />
+        </Link>
+        <p className="text-center font-semibold">Usuario: {data?.name}</p>
         <EditMember person={data} />
       </div>
     </div>

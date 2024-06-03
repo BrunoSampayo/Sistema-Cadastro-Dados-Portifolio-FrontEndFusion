@@ -24,6 +24,7 @@ import {
 } from '@/components/ui/alert-dialog'
 import { Team } from '@prisma/client'
 import { deleteTeam } from '@/actions/deleteTeam'
+import Link from 'next/link'
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -31,7 +32,16 @@ import { deleteTeam } from '@/actions/deleteTeam'
 export const columns: ColumnDef<Team>[] = [
   {
     accessorKey: 'name',
-    header: 'Name',
+    header: 'Time',
+    cell: ({ row }) => {
+      const thisRow = row.original
+
+      return (
+        <Link className="font-medium hover:text-lg" href={`/${thisRow.id}`}>
+          {thisRow.name}
+        </Link>
+      )
+    },
   },
   {
     header: 'Action',
@@ -47,9 +57,13 @@ export const columns: ColumnDef<Team>[] = [
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent align="end" className="space-y-2">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-
+            <DropdownMenuItem>
+              <Link className="font-semibold" href={`/${team.id}`}>
+                Pagina do Time
+              </Link>
+            </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <AlertDialog>
                 <AlertDialogTrigger className="w-full text-white rounded bg-red-600 focus:bg-red-700 focus:text-white">

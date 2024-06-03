@@ -21,6 +21,7 @@ export const editMemberSchema = z.object({
   subTitle: z.string().min(4, { message: 'Minimo 4 Caracteres' }),
   text: z.string().min(4, { message: 'Minimo 4 Caracteres' }),
   githubUrl: z.string().url({ message: 'Url invalida' }),
+  githubImgUrl: z.string().optional(),
   linkedinUrl: z.string().url({ message: 'Url invalida' }),
   instagramUrl: z.string().url({ message: 'Url invalida' }),
   facebookUrl: z.string().url({ message: 'Url invalida' }),

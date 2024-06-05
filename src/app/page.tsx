@@ -1,19 +1,12 @@
-import prismadb from '@/lib/prisma'
+import { columns } from '@/components/table/columns'
+import AddTeamForm from '../components/addTeamForm'
 
-import { columns } from './_components/table/columns'
-import { DataTable } from './_components/table/data-table'
-import AddTeamForm from './_components/addTeamForm'
+import { DataTable } from '@/components/table/data-table'
+import { getAllTeams } from '@/data/team'
 
 export default async function TeamPage() {
-  const getData = async () => {
-    'use server'
-    const teams = await prismadb.team.findMany({
-      where: {},
-    })
-    return teams
-  }
+  const data = await getAllTeams()
 
-  const data = await getData()
   return (
     <div className="text-white container space-y-6 mt-2">
       <h1 className="text-center text-2xl mb-4">
@@ -22,8 +15,7 @@ export default async function TeamPage() {
       <div className="flex justify-center">
         <AddTeamForm />
       </div>
-
-      <DataTable columns={columns} data={data} />
+      <DataTable columns={columns} data={data || []} />
     </div>
   )
 }

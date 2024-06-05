@@ -41,7 +41,7 @@ export default function AddMemberForm(props: { teamId: string | undefined }) {
     })
   }
   return (
-    <main className="text-white">
+    <main className="text-black">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="flex items-end space-x-2">

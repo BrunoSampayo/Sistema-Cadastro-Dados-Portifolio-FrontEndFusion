@@ -1,17 +1,18 @@
-import prismadb from '@/lib/prisma'
 import TableMember from './_components/table/table'
 import AddMemberForm from './_components/addMemberForm'
 import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
+import { redirect } from 'next/navigation'
+import { getTeamById } from '@/data/team'
 
 export default async function TeamPage({
   params,
 }: {
   params: { teamId: string }
 }) {
-  const team = await prismadb.team.findFirst({
-    where: { id: params.teamId },
-  })
+  const team = await getTeamById(params.teamId)
+
+  if (!team) redirect('/')
 
   return (
     <div className="text-white container mt-4">

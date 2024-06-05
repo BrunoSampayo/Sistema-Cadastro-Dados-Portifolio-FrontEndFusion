@@ -1,20 +1,16 @@
-import prismadb from '@/lib/prisma'
 import EditMember from './_components/editMemberForm'
 import { ChevronLeft } from 'lucide-react'
 import Link from 'next/link'
+import { getMemberById } from '@/data/member'
+import { redirect } from 'next/navigation'
 
 export default async function MemberPage({
   params,
 }: {
   params: { memberId: string }
 }) {
-  const getMemberData = async () => {
-    'use server'
-    return await prismadb.person.findUnique({ where: { id: params.memberId } })
-  }
-
-  const data = await getMemberData()
-  if (data === null) return
+  const data = await getMemberById(params.memberId)
+  if (!data) redirect('/')
   return (
     <div className=" container">
       <div className="rounded bg-white mx-auto mt-6 p-1">

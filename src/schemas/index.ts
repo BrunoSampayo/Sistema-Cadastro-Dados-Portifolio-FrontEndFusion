@@ -22,7 +22,19 @@ export const editMemberSchema = z.object({
   text: z.string().min(4, { message: 'Minimo 4 Caracteres' }),
   githubUrl: z.string().url({ message: 'Url invalida' }),
   githubImgUrl: z.string().optional(),
-  linkedinUrl: z.string().url({ message: 'Url invalida' }),
-  instagramUrl: z.string().url({ message: 'Url invalida' }),
-  facebookUrl: z.string().url({ message: 'Url invalida' }),
+  linkedinUrl: z
+    .string()
+    .url({ message: 'Url invalida' })
+    .optional()
+    .or(z.literal('')),
+  instagramUrl: z
+    .string()
+    .url({ message: 'Url invalida' })
+    .optional()
+    .or(z.literal('')),
+  facebookUrl: z
+    .string()
+    .url({ message: 'Url invalida' })
+    .optional()
+    .or(z.literal('')),
 })

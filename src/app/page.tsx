@@ -10,7 +10,7 @@ export default async function TeamPage() {
   return (
     <div className="text-white container space-y-6 mt-2">
       <h1 className="text-center text-2xl mb-4">
-        Sistema de Gerenciamento de Time Code Explorer
+        Sistema de Gerenciamento de Time Code Wizard
       </h1>
       <div className="flex justify-center">
         <AddTeamForm />

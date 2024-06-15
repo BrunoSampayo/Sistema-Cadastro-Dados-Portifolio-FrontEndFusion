@@ -1,8 +1,7 @@
 import EditMember from './_components/editMemberForm'
-import { ChevronLeft } from 'lucide-react'
-import Link from 'next/link'
 import { getMemberById } from '@/data/member'
 import { redirect } from 'next/navigation'
+import { ReturnPage } from '@/components/ui/return-page'
 
 export default async function MemberPage({
   params,
@@ -14,12 +13,7 @@ export default async function MemberPage({
   return (
     <div className=" container">
       <div className="rounded bg-white mx-auto mt-6 p-1">
-        <Link
-          href={`/${data.teamId}`}
-          className="m-4 rounded-full border size-10 flex justify-center items-center hover:bg-black hover:text-white"
-        >
-          <ChevronLeft />
-        </Link>
+        <ReturnPage />
         <p className="text-center font-semibold">Usuario: {data?.name}</p>
         <EditMember person={data} />
       </div>

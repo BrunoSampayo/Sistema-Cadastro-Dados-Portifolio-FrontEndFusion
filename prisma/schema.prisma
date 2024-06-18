@@ -37,5 +37,6 @@ model Project {
   id         String @id @default(cuid())
   projectUrl String
   personId   String
+  public_id  String
   person     Person @relation(fields: [personId], references: [id], onDelete: Cascade)
 }

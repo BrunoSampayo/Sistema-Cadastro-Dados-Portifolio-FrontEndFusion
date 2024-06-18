@@ -1,7 +1,7 @@
-import TableProjects from './_components/table/table'
-import AddProjectForm from './_components/addProjectForm'
 import { getProjectsByUserId } from '@/data/project'
 import { ReturnPage } from '@/components/ui/return-page'
+import { CldUploadButtonComponent } from '@/components/cloudinary-upload-button'
+import { MemberProjects } from './_components/memberProjects'
 
 export default async function MemberPage({
   params,
@@ -11,15 +11,14 @@ export default async function MemberPage({
   const data = await getProjectsByUserId(params.memberId)
 
   return (
-    <div className="">
-      <div className="w-1/2 rounded bg-white mx-auto mt-6 p-1">
-        <ReturnPage />
-        <p className="text-center font-bold">Seus projetos</p>
-        <div className="flex justify-center">
-          <AddProjectForm memberId={params.memberId} />
-        </div>
-        <TableProjects projecst={data || []} />
+    <div className="container rounded bg-white mx-auto mt-6 p-4">
+      <ReturnPage />
+      <p className="text-center text-4xl mb-4 font-bold">Upload dos projetos</p>
+      <div className="flex justify-center items-center space-x-2">
+        <span>Faça Upload de seus Projetos: </span>
+        <CldUploadButtonComponent memberId={params.memberId} />
       </div>
+      {data && <MemberProjects projects={data} />}
     </div>
   )
 }

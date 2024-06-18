@@ -12,7 +12,8 @@ export const addTeamSchema = z.object({
 })
 
 export const addProjectSchema = z.object({
-  projectUrl: z.string().url(),
+  url: z.string().url(),
+  public_id: z.string(),
 })
 
 export const editMemberSchema = z.object({

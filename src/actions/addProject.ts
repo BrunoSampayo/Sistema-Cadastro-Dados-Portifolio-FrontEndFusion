@@ -10,15 +10,16 @@ export const addProject = async (
   const validate = addProjectSchema.safeParse(value)
 
   if (validate.success) {
-    if (!memberId) return { error: 'Id do Time Invalido' }
+    if (!memberId) return { error: 'Id do usuario invalido' }
     const member = await prismadb.person.findFirst({ where: { id: memberId } })
     if (!member) {
-      return { error: 'Time Não Encontrado' }
+      return { error: 'Membro nao encontrado' }
     }
     try {
       await prismadb.project.create({
         data: {
-          projectUrl: validate.data.projectUrl,
+          projectUrl: validate.data.url,
+          public_id: validate.data.public_id,
           personId: member.id,
         },
       })

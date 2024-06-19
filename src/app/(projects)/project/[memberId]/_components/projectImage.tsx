@@ -1,5 +1,5 @@
 'use client'
-import { deleteProject } from '@/actions/deleteProject'
+import { deleteProject } from '@/actions/project/deleteProject'
 import { Button } from '@/components/ui/button'
 import { Project } from '@prisma/client'
 import { TrashIcon } from 'lucide-react'

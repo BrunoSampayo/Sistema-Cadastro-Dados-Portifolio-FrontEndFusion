@@ -23,7 +23,7 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 import { Team } from '@prisma/client'
-import { deleteTeam } from '@/actions/deleteTeam'
+import { deleteTeam } from '@/actions/teams/deleteTeam'
 import Link from 'next/link'
 
 import { Badge } from '@/components/ui/badge'

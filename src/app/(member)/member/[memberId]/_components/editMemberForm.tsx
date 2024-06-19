@@ -17,7 +17,7 @@ import { editMemberSchema } from '@/schemas'
 import toast from 'react-hot-toast'
 import z from 'zod'
 import { Person } from '@prisma/client'
-import { editMember } from '@/actions/editMember'
+import { editMember } from '@/actions/user/editMember'
 export default function EditMember(props: { person: Person }) {
   const form = useForm<z.infer<typeof editMemberSchema>>({
     resolver: zodResolver(editMemberSchema),

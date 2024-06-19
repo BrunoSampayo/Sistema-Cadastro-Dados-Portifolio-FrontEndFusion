@@ -16,7 +16,7 @@ import { useTransition } from 'react'
 import { addTeamSchema } from '@/schemas'
 import toast from 'react-hot-toast'
 import z from 'zod'
-import { addTeam } from '@/actions/addTeam'
+import { addTeam } from '@/actions/teams/addTeam'
 export default function AddTeamForm() {
   const form = useForm<z.infer<typeof addTeamSchema>>({
     resolver: zodResolver(addTeamSchema),

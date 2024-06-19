@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import Link from 'next/link'
 import { Person } from '@prisma/client'
-import { deleteMember } from '@/actions/deleteMember'
+import { deleteMember } from '@/actions/user/deleteMember'
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 

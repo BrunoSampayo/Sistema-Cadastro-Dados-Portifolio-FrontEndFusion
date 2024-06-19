@@ -16,7 +16,7 @@ import { useTransition } from 'react'
 import { addMemberSchema } from '@/schemas'
 import toast from 'react-hot-toast'
 import z from 'zod'
-import { AddMember } from '@/actions/addMember'
+import { AddMember } from '@/actions/user/addMember'
 export default function AddMemberForm(props: { teamId: string | undefined }) {
   const form = useForm<z.infer<typeof addMemberSchema>>({
     resolver: zodResolver(addMemberSchema),
